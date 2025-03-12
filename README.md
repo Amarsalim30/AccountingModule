@@ -79,22 +79,49 @@ The module adheres to double-entry accounting principles—ensuring every transa
 - **Automation & Integration:**  
   Use an event-driven architecture to automate accounting entries across POS modules.
 ## Project Structure
-
 accounting-backend/
-|
-├── src/main/java/com/amarprojects/accounting/
-│   ├── config/                # Configuration (CORS, OpenAPI, Security, etc.)
-│   ├── controller/            # REST controllers (InvoiceController, PaymentController, etc.)
-│   ├── dto/                   # Data Transfer Objects (InvoiceRequest, PaymentRequest, etc.)
-│   ├── exception/             # Custom exceptions & GlobalExceptionHandler
-│   ├── model/                 # JPA Entities (Account, JournalEntry, JournalEntryLine, Invoice, etc.)
-│   ├── repository/            # Spring Data JPA repositories (AccountRepository, JournalEntryRepository, etc.)
-│   ├── service/               # Business logic services (InvoiceService, PaymentService, ExpenseService, etc.)
-│   └── AccountingApplication.java  # Main application entry point
-├── src/main/resources/
-│   ├── application.properties # Configuration properties (database, logging, etc.)
-│   └── data.sql               # Seed data for key accounts
-└── pom.xml                    # Maven build file with dependencies
+├── pom.xml
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   └── com/
+    │   │       └── amarprojects/
+    │   │           └── accounting/
+    │   │               ├── AccountingApplication.java        # Main entry point
+    │   │               ├── config/                            # Configuration (CORS, OpenAPI, Security, etc.)
+    │   │               │   └── OpenApiConfig.java
+    │   │               ├── controller/                        # REST controllers
+    │   │               │   ├── InvoiceController.java
+    │   │               │   └── PaymentController.java
+    │   │               ├── dto/                               # Data Transfer Objects
+    │   │               │   ├── InvoiceRequest.java
+    │   │               │   └── PaymentRequest.java
+    │   │               ├── exception/                         # Custom exceptions & global handlers
+    │   │               │   ├── AccountingException.java
+    │   │               │   └── GlobalExceptionHandler.java
+    │   │               ├── model/                             # JPA Entities (domain models)
+    │   │               │   ├── Account.java
+    │   │               │   ├── Invoice.java
+    │   │               │   ├── JournalEntry.java
+    │   │               │   └── JournalEntryLine.java
+    │   │               ├── repository/                        # Spring Data JPA repositories
+    │   │               │   ├── AccountRepository.java
+    │   │               │   └── JournalEntryRepository.java
+    │   │               └── service/                           # Business logic services
+    │   │                   ├── InvoiceService.java
+    │   │                   ├── PaymentService.java
+    │   │                   └── ExpenseService.java
+    │   └── resources/
+    │       ├── application.properties  # Configuration properties (DB, logging, etc.)
+    │       └── data.sql                # Seed data for key accounts
+    └── test/
+        └── java/
+            └── com/
+                └── amarprojects/
+                    └── accounting/
+                        └── InvoiceServiceTest.java   # Example test class
+
+
 ## Dependencies
 
 Key Maven dependencies include:
