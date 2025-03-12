@@ -82,6 +82,7 @@ The module adheres to double-entry accounting principles—ensuring every transa
 ## Project Structure
 
 accounting-backend/
+|
 ├── src/main/java/com/amarprojects/accounting/
 │   ├── config/                # Configuration (CORS, OpenAPI, Security, etc.)
 │   ├── controller/            # REST controllers (InvoiceController, PaymentController, etc.)
@@ -146,15 +147,4 @@ Contributions are welcome! Please fork the repository and submit pull requests. 
 
 ## License
 
-This project is licensed under the MIT License.
-
----
-
-This README provides a clear and detailed overview of the Accounting Module, outlining its core functionalities, roadmap for future development, project structure, dependencies, and instructions for running and testing the module. Use this document to onboard new developers and serve as a reference for maintaining and extending the module.
-
-Happy coding!
-```
-
----
-
-This README.md file is designed to be comprehensive and clear, making it easy for anyone reviewing your GitHub repository to understand the purpose, structure, and future direction of your Accounting Module for your POS system.
+This project is licensed under Amar
