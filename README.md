@@ -78,7 +78,6 @@ The module adheres to double-entry accounting principles—ensuring every transa
   Integrate comprehensive logging for all transactions.
 - **Automation & Integration:**  
   Use an event-driven architecture to automate accounting entries across POS modules.
-
 ## Project Structure
 
 accounting-backend/
@@ -96,8 +95,6 @@ accounting-backend/
 │   ├── application.properties # Configuration properties (database, logging, etc.)
 │   └── data.sql               # Seed data for key accounts
 └── pom.xml                    # Maven build file with dependencies
-
-
 ## Dependencies
 
 Key Maven dependencies include:
