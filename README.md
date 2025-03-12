@@ -1,8 +1,3 @@
-Below is a complete README.md file tailored for your Accounting Module repository. You can copy this into your repository’s README.md file to provide a clear overview, usage instructions, and a roadmap for future enhancements.
-
----
-
-```markdown
 # Accounting Module for POS System
 
 A comprehensive Accounting Module for a Point-of-Sale (POS) system built using Spring Boot. This module implements double-entry bookkeeping and covers core accounting functionalities such as invoice processing, payment processing, expense tracking, and more. It is designed to be robust, scalable, and production-ready, serving the needs of both small businesses and large enterprises.
@@ -86,7 +81,6 @@ The module adheres to double-entry accounting principles—ensuring every transa
 
 ## Project Structure
 
-```
 accounting-backend/
 ├── src/main/java/com/amarprojects/accounting/
 │   ├── config/                # Configuration (CORS, OpenAPI, Security, etc.)
@@ -101,7 +95,7 @@ accounting-backend/
 │   ├── application.properties # Configuration properties (database, logging, etc.)
 │   └── data.sql               # Seed data for key accounts
 └── pom.xml                    # Maven build file with dependencies
-```
+
 
 ## Dependencies
 
