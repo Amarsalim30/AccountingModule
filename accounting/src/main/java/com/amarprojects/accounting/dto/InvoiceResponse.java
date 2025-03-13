@@ -11,5 +11,5 @@ public class InvoiceResponse {
     private LocalDate date;
     private BigDecimal subtotal;
     private BigDecimal vat;
-    private BigDecimal total;
+    private BigDecimal total;    
 }
