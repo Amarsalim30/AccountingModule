@@ -13,10 +13,9 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                    .allowedOrigins("http://localhost:5173") // Vite dev server
-                    .allowedMethods("GET", "POST", "PUT", "DELETE")
-                    .allowedHeaders("Content-Type", "Authorization")
-                    .allowCredentials(true)
+                    .allowedOrigins("*") // Allow all origins in development
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                    .allowedHeaders("*")
                     .maxAge(3600); // 1 hour cache
             }
         };
