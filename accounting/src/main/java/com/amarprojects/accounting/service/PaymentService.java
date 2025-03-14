@@ -3,21 +3,23 @@ package com.amarprojects.accounting.service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.amarprojects.accounting.dto.PaymentRequest;
+import com.amarprojects.accounting.dto.PaymentResponse;
 import com.amarprojects.accounting.exception.AccountingException;
 import com.amarprojects.accounting.model.Account;
 import com.amarprojects.accounting.model.Invoice;
 import com.amarprojects.accounting.model.JournalEntry;
 import com.amarprojects.accounting.model.JournalEntryLine;
+import com.amarprojects.accounting.model.Payment;
 import com.amarprojects.accounting.repository.AccountRepository;
 import com.amarprojects.accounting.repository.InvoiceRepository;
 import com.amarprojects.accounting.repository.JournalEntryRepository;
+import com.amarprojects.accounting.repository.PaymentRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +33,7 @@ public class PaymentService {
     private static final String CASH_ACCOUNT_CODE = "CASH";
     private static final String AR_ACCOUNT_CODE = "AR";
 
+    private final PaymentRepository paymentRepository;
     private final InvoiceRepository invoiceRepository;
     private final AccountRepository accountRepository;
     private final JournalEntryRepository journalEntryRepository;
@@ -124,12 +127,27 @@ public class PaymentService {
                 totalDebit + " ≠ Credit " + totalCredit);
         }
     }
-    public List<Payments> listAllPayments() {
+
+    public List<PaymentResponse> listAllPayments() {
         return paymentRepository.findAll().stream()
                 .map(this::convertToResponse)
                 .collect(Collectors.toList());
     }
-    public Optional<List<Payments>> findPaymentsByInvoiceId(Long invoiceId) {
-        return paymentRepository.findByInvoiceId(invoiceId);
+
+    public List<PaymentResponse> findPaymentsByInvoiceId(Long invoiceId) {
+        return paymentRepository.findByInvoiceId(invoiceId).stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
+    }
+
+    private PaymentResponse convertToResponse(Payment payment) {
+        return PaymentResponse.builder()
+                .id(payment.getId())
+                .amount(payment.getAmount())
+                .paymentDate(payment.getPaymentDate())
+                .paymentMethod(payment.getPaymentMethod())
+                .transactionReference(payment.getTransactionReference())
+                .invoiceNumber(payment.getInvoice().getInvoiceNumber())
+                .build();
     }
 }

@@ -6,9 +6,11 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class PaymentRequest {
     @NotNull(message = "Invoice ID is required")
     private Long invoiceId;
